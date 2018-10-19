@@ -35,19 +35,22 @@ int main() {
             cin >> arr[i];
         }
 
-        sort(arr,arr+7);
+        sort(arr, arr+7);
 
         set<int> possibles;
-        for(int i = 0; i < 7; i++) {
-            for(int j = i+1; j < 7; j++) {
-                for(int k = j+1; k < 7; k++) {
-                    possibles.insert(arr[i] + arr[j] + arr[k]);
-                }
-            }
-        }
+        possibles.insert(arr[0] + arr[5] + arr[6]); // 1,6,7
+        possibles.insert(arr[1] + arr[3] + arr[6]); // 2,4,7
+        possibles.insert(arr[1] + arr[4] + arr[6]); // 2,5,7
+        possibles.insert(arr[1] + arr[5] + arr[6]); // 2,6,7
+        possibles.insert(arr[2] + arr[3] + arr[6]); // 3,4,7
+        possibles.insert(arr[2] + arr[4] + arr[5]); // 3,5,6
+        possibles.insert(arr[2] + arr[4] + arr[6]); // 3,5,7
+        possibles.insert(arr[2] + arr[5] + arr[6]); // 3,6,7
+        possibles.insert(arr[3] + arr[4] + arr[5]); // 4,5,6
+        possibles.insert(arr[3] + arr[4] + arr[6]); // 4,5,7
 
         std::set<int>::iterator it = possibles.begin();
-        std::advance(it, possibles.size()-5);
+        std::advance(it, possibles.size()-3);
         Answer = *it;
 
         cout << "#" << (T+1) << " ";
